@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(UurroosterDataStore.self) private var uurroosterDataStore
+   
+    @State private var uurroosterDataStore = UurroosterDataStore()
         var body: some View {
         
         NavigationStack{

@@ -33,7 +33,7 @@ class UurroosterDataStore {
     
     //func getEvent(eventid: String) -> EventModel {
         
-    //}
+   // }
     
     func loadData() async {
         //simulate async call
@@ -41,7 +41,7 @@ class UurroosterDataStore {
             print("⏳ Simulating 2-second load delay...")
             try await Task.sleep(for: .seconds(2)) // Simulate long load
             let data: [EventModelJson] = try load("uurrooster.json")
-            uurrooster = data.map {EventModel(from: $0.toEventModel())}
+            uurrooster = data.map {$0.toEventModel()}
             sort()
             print("✅ Data loaded successfully.")
             
