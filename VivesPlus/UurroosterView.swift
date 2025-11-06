@@ -16,9 +16,18 @@ struct UurroosterView: View {
         NavigationSplitView {
             if loading {
                 ProgressView("Loading...")
+                    .task {
+                        await uurroosterDataStore.loadData()
+                        loading = false
+                    }
+                            
             } else {
-                List(uurroosterDataStore.getAllevents(), id: \.self) { event in
-                    Text(event.title)
+                List(uurroosterDataStore.getAllevents(), id: \.id) { event in
+                    VStack{
+                        Text(DateUtil.formatDateTime(date: event.startDateTime))
+                        Text(event.title)
+                    }
+                    
             }
             }
         } detail: {
