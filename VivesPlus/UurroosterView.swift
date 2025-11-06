@@ -17,8 +17,8 @@ struct UurroosterView: View {
             if loading {
                 ProgressView("Loading...")
             } else {
-                List(uurroosterDataStore.uurrooster, id: \.self) { eventModel in
-                    Text(eventModel.title)
+                List(uurroosterDataStore.getAllevents(), id: \.self) { event in
+                    Text(event.title)
             }
             }
         } detail: {
