@@ -13,17 +13,7 @@ struct UurroosterView: View {
     @State var loading = true
     var body: some View {
         
-        NavigationSplitView {
-            if loading {
-                ProgressView("Loading...")
-            } else {
-            List(uurroosterDataStore.uurrooster, id: \.self,) { eventModel in
-                
-            }
-            }
-        } detail: {
-            
-        }
+        Text("hallo")
 
 
     }

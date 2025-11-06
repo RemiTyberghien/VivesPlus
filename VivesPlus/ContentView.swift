@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var UurroosterDataStore = UurroosterDataStore()
-    var body: some View {
+    @Environment(UurroosterDataStore.self) private var uurroosterDataStore
+        var body: some View {
         
         NavigationStack{
             UurroosterView()
-        }.environment(UurroosterDataStore)
+        }.environment(uurroosterDataStore)
     }
 }
 
