@@ -33,7 +33,7 @@ class UurroosterDataStore {
     
     //func getEvent(eventid: String) -> EventModel {
         
-   // }
+   //}
     
     func getAllevents() -> [EventModel]
     {

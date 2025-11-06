@@ -11,6 +11,7 @@ struct UurroosterView: View {
     
     @Environment(UurroosterDataStore.self) private var uurroosterDataStore
     @State var loading = true
+    @State var selectedID : String? = nil
     var body: some View {
         
         NavigationSplitView {
@@ -22,7 +23,7 @@ struct UurroosterView: View {
                     }
                             
             } else {
-                List(uurroosterDataStore.getAllevents(), id: \.id) { event in
+                List(uurroosterDataStore.getAllevents(), id: \.id, selection: $selectedID) { event in
                     VStack{
                         Text(DateUtil.formatDateTime(date: event.startDateTime))
                         Text(event.title)
@@ -31,7 +32,7 @@ struct UurroosterView: View {
             }
             }
         } detail: {
-            
+                UurroosterDetailView(selectedID: $selectedID)
         }
 
 

@@ -1,18 +1,32 @@
-//
-//  UurroosterDetailView.swift
-//  VivesPlus
-//
-//  Created by Remi.Tyberghien on 04/11/2025.
-//
-
 import SwiftUI
 
 struct UurroosterDetailView: View {
+    @Environment(UurroosterDataStore.self) private var uurroosterDataStore
+    @Binding var selectedID: String?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if let selectedID = selectedID,
+           let event = uurroosterDataStore.getEvent(eventid: selectedID) {
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text(event.title)
+                    .font(.headline)
+                
+                if let description = event.description {
+                    Text(description)
+                        .font(.subheadline)
+                }
+            }
+            .padding()
+            
+        } else {
+            Text("Selecteer event")
+                .foregroundStyle(.secondary)
+                .italic()
+                .padding()
+        }
     }
 }
 
-#Preview {
-    UurroosterDetailView()
 }
+
